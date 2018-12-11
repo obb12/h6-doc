@@ -1,24 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <title></title>
-  <style type="text/css">code{white-space: pre;}</style>
-</head>
-<body>
-<h2 id="h6">h6</h2>
+## h6
 System specs used in this assigment
 <pre><code>Gpu: Nvidia Geforce GTX 560 TI
 CPU: Intel i5-3450 @ 3.5ghz
 Memory: 2gb</code></pre>
-<p>The operating system is ubuntu budgie 18.10 All task were doing in a virtualbox Im installing lamp stack (apache,mariadb,php-fpm)</p>
-<h3 id="apache">apache</h3>
+The operating system is ubuntu budgie 18.10
+All task were doing in a virtualbox
+Im installing lamp stack (apache,mariadb,php-fpm)
+
+### apache
 First install apache
 <pre><code>sudo apt-get install apache2</code></pre>
-<p>i visit <a href="http://localhost">http://localhost</a></p>
-<h3 id="mariadb">mariadb</h3>
+i visit <a href="http://localhost">http://localhost</a>
+<img src="apache.png">
+### mariadb
 Next step is to install mariadb
 <pre><code>sudo apt-get install mariadb-server</code></pre>
 configure mariadb to add a user and a password
@@ -28,13 +22,16 @@ GRANT ALL PRIVILEGES ON *.* TO 'test'@'localhost' IDENTIFIED BY 'password';
 create a database
 <pre><code>create schema test;
 </code></pre>
-<h3 id="php-fpm">php-fpm</h3>
+
+### php-fpm
 now to install php-fpm to apache
 <pre><code>sudo apt-get install php-fpm php</code></pre>
+<img src="phpinfo.png">
+
 tell apache to use php-fpm instead of libapache-mod-php*
 <pre><code>sudo a2enmod proxy_fcgi setenvif
 sudo a2enconf php-7.2-fpm</code></pre>
-now test php-fpm<br />
+now test php-fpm                                      
 /var/www/html/index.php
 <pre><code>&ltphp phpinfo(); ?&gt</code></pre>
 install php-mysql to test the database
@@ -66,12 +63,13 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?&gt</code></pre>
-<h3 id="salt-module">salt module</h3>
-<p>Heres the salt module for this configuration <a href="https://github.com/obb12/h6.git" class="uri">https://github.com/obb12/h6.git</a></p>
-<h4 id="sources">sources</h4>
-<ol style="list-style-type: decimal">
-<li><a href="https://www.a2hosting.com/kb/developer-corner/mysql/managing-mysql-databases-and-users-from-the-command-line" class="uri">https://www.a2hosting.com/kb/developer-corner/mysql/managing-mysql-databases-and-users-from-the-command-line</a></li>
-<li><a href="http://terokarvinen.com/2018/aikataulu-palvelinten-hallinta-ict4tn022-3004-ti-ja-3002-to-loppukevat-2018-5p" class="uri">http://terokarvinen.com/2018/aikataulu-palvelinten-hallinta-ict4tn022-3004-ti-ja-3002-to-loppukevat-2018-5p</a></li>
-</ol>
-</body>
-</html>
+<img src="mysql.png">
+
+### salt module
+Heres the salt module for this configuration
+[https://github.com/obb12/h6.git](https://github.com/obb12/h6.git)
+
+#### sources
+1. [https://www.a2hosting.com/kb/developer-corner/mysql/managing-mysql-databases-and-users-from-the-command-line](https://www.a2hosting.com/kb/developer-corner/mysql/managing-mysql-databases-and-users-from-the-command-line)
+2.   
+[http://terokarvinen.com/2018/aikataulu-palvelinten-hallinta-ict4tn022-3004-ti-ja-3002-to-loppukevat-2018-5p](http://terokarvinen.com/2018/aikataulu-palvelinten-hallinta-ict4tn022-3004-ti-ja-3002-to-loppukevat-2018-5p)
